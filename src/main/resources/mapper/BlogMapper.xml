@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljh.blog.dao.BlogMapper">
+    <insert id="addBlog" parameterType="Blog">
+        insert into blog (title,edits,blogStatus) values (#{title},#{edits},#{blogStatus})
+    </insert>
+    <delete id="deleteBlog" parameterType="int">
+        delete from blog where blogId=#{id}
+    </delete>
+    <update id="updateBlog" parameterType="Blog">
+        update blog set title=#{title},edits=#{edits},blogStatus=#{blogStatus},amountOfReading=#{amountOfReading},time=now() where blogId=#{blogId}
+    </update>
+    <update id="addAmountOfReading" parameterType="int">
+        update blog set amountOfReading=amountOfReading+1 where blogId=#{id}
+    </update>
+    <select id="queryBlogById" parameterType="int" resultType="Blog">
+        select * from blog where blogId=#{id}
+    </select>
+    <select id="queryAllBlog" resultType="Blog">
+        select * from blog
+    </select>
+</mapper>
