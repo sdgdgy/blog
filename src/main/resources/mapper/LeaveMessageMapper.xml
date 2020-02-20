@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljh.blog.dao.LeaveMessageMapper">
+    <insert id="addLeaveMessage" parameterType="LeaveMessages">
+        insert into leavemessages (title,content) values (#{title},#{content})
+    </insert>
+    <delete id="deleteLeaveMessage" parameterType="int">
+        delete from leavemessages where id=#{id}
+    </delete>
+    <update id="updateLeaveMessage" parameterType="LeaveMessages">
+        update leavemessages set title=#{title},content=#{content},time=now() where id=#{id}
+    </update>
+    <select id="queryLeaveMessageById" parameterType="int" resultType="LeaveMessages">
+        select * from leavemessages where id=#{id}
+    </select>
+    <select id="queryAllLeaveMessage" resultType="LeaveMessages">
+        select * from leavemessages
+    </select>
+</mapper>

@@ -45,4 +45,10 @@ public class BlogServiceImpl implements BlogService {
         blogMapper.addAmountOfReading(id);
         return 1;
     }
+
+    @Override
+    public int updateBlogStatus(int id,int blogStatus) {
+        blogMapper.updateBlogStatus(id,blogStatus);
+        return 1;
+    }
 }

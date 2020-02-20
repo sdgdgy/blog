@@ -10,10 +10,13 @@
         delete from blog where blogId=#{id}
     </delete>
     <update id="updateBlog" parameterType="Blog">
-        update blog set title=#{title},edits=#{edits},blogStatus=#{blogStatus},amountOfReading=#{amountOfReading},time=now() where blogId=#{blogId}
+        update blog set title=#{title},edits=#{edits},time=now(),blogStatus=#{blogStatus} where blogId=#{blogId}
     </update>
     <update id="addAmountOfReading" parameterType="int">
         update blog set amountOfReading=amountOfReading+1 where blogId=#{id}
+    </update>
+    <update id="updateBlogStatus" parameterType="int">
+        update blog set blogStatus=#{blogStatus} where blogId=#{id}
     </update>
     <select id="queryBlogById" parameterType="int" resultType="Blog">
         select * from blog where blogId=#{id}

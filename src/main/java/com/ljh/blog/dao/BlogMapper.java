@@ -22,4 +22,6 @@ public interface BlogMapper {
     List<Blog> queryAllBlog();
     //增加阅读量
     int addAmountOfReading(@Param("id") int id);
+
+    int updateBlogStatus(@Param("id") int id,@Param("blogStatus")int blogStatus);
 }

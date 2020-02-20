@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ljh.blog.dao.AboutMapper">
+    <insert id="addAbout" parameterType="About">
+        insert into about (title, content) values(#{title},#{content})
+    </insert>
+    <delete id="deleteAbout" parameterType="int">
+        delete from about where id=#{id}
+    </delete>
+    <update id="updateAbout" parameterType="About">
+        update about set time=now() where id=#{id}
+    </update>
+    <update id="addAmountOfReading" parameterType="int">
+        update about set amountOfReading=amountOfReading+1 where id=#{id}
+    </update>
+    <select id="queryAboutById" parameterType="int" resultType="About">
+        select * from about where id=#{id}
+    </select>
+    <select id="queryAllAbout" resultType="About">
+        select * from about order by time desc
+    </select>
+</mapper>
